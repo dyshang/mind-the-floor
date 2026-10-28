@@ -1,0 +1,52 @@
+{
+ "_note": "Second coding pass over all 29 census papers on question (a), blind to the first pass's codes. Disclosure: this pass was performed by an AI assistant reading the arXiv full texts, not by a second human coder. It is a verification pass, not an independent replication, and it is reported as such in Appendix D. Both passes share the same automated extraction step, so a baseline that extraction misses is missed twice.",
+ "question_a": "Does the paper report a NUMERIC score for an input-oblivious baseline on its own benchmark?",
+ "agreement_on_a": {
+  "agree": 29,
+  "of": 29,
+  "disagreements": []
+ },
+ "kappa_reported": false,
+ "why_no_kappa": "The marginal is 1 yes in 29, so chance agreement p_e is within 1e-3 of 1 and Cohen's kappa is numerically unstable exactly as this paper's own Appendix B describes: its bound carries a 1/(1-p_e) factor that blows up under extreme imbalance. On this table kappa is 0/0 to three decimals. We report the raw agreement, the corrections the pass produced, and this reason, rather than a statistic our own analysis says is uninformative here.",
+ "corrections_produced": [
+  {
+   "benchmark": "MINT",
+   "field": "b_location",
+   "from": "absent",
+   "to": "design rationale only",
+   "evidence": "\"we filter out instances that a random guess baseline can do well, e.g., multiple-choice instances with < 4 options\" (arXiv 2309.10691)",
+   "effect": "moves the (e) count from 3 to 4"
+  }
+ ],
+ "boundary_cases_examined": [
+  {
+   "benchmark": "WindowsAgentArena",
+   "verdict": "absent, unchanged",
+   "reason": "inherits OSWorld's infeasible-task reward ('success if the agent accurately predicts failure for an infeasible task') but never reasons about what an always-FAIL policy would collect, and reports no infeasible-task count"
+  },
+  {
+   "benchmark": "AgentBench",
+   "verdict": "no, unchanged",
+   "reason": "names 'a simply random action from all available action spaces' as one of two naive baselines, but it is the LLM's in-game opponent in the Digital Card Game task and no score is reported for it"
+  },
+  {
+   "benchmark": "GPQA",
+   "verdict": "yes (nominal 25%), unchanged",
+   "reason": "its two answer-only classifiers (T5, CBOW) read the answer options, so they are partial-input rather than input-oblivious and fall outside the definition; they are also reported as failing to beat chance rather than as a score, and are run on a 20% validation subset of the 564-question extended set rather than the released diamond split. Question (c) stays 0/29."
+  },
+  {
+   "benchmark": "WebShop",
+   "verdict": "no, unchanged",
+   "reason": "the rule baseline searches the exact instruction text, so it reads the input (confirms the first pass's adjudication)"
+  },
+  {
+   "benchmark": "TravelPlanner",
+   "verdict": "no, unchanged",
+   "reason": "greedy search optimizes over the query's own constraints, so it reads the input (confirms the first pass's adjudication)"
+  }
+ ],
+ "incidental_finding": {
+  "benchmark": "OSWorld",
+  "note": "Tab. 6 of OSWorld prints 'Infeasible 8.13%' in its '% of Total' column, i.e. the share of the dataset that is infeasible. That is the same number, from the same 30/369, as the score a constant-FAIL policy collects; the table reports it as a dataset property without recognising it as a floor. The SR column for that row (16.67%) is GPT-4V(SoM)'s success rate on the infeasible subset, not a baseline."
+ }
+}

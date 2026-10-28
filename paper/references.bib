@@ -1,0 +1,510 @@
+% Paper references.
+% Verified 2026-08-06 and re-verified 2026-08-08: all 17 arXiv-hosted entries
+% checked against the arXiv API (title, author list, year). The 2026-08-08 pass
+% covered the three entries added after the first pass and corrected two of
+% them: 2301.03318 had inherited the author list of its 2022 companion (its
+% first author is Pries, and Hoogendoorn is not an author), and 2401.16594 had
+% an incorrect author list entirely (first author Schultheis). Both keys were
+% renamed so the rendered citation names the right first author.
+% Venue-published entries (Pedregosa, Shridhar, Jimenez, Zhou, Wang, Chicco,
+% Cohen, Wen, Reuel) checked against their canonical records. Three entries are
+% non-paper sources verified by direct fetch: patil2024bfcl (leaderboard page),
+% bfcl2025v4scoring (gorilla CHANGELOG, PR 1019) and hal2025taubench.
+% wang2026safety replaced the anonymized concurrent-work placeholder at
+% camera-ready (2026-09-30), checked against arXiv:2607.28685.
+%
+% 2026-08-10/11 additions (forecast-verification prior art, the reporting
+% guidelines, saito2015prc, chen2021codex, zheng2024selectors, kaushik2018reading,
+% zhu2025abc, barres2025tau2, xie2024osworld) have NOT been through the arXiv-API
+% pass above: the pre-1990 and journal-only entries have no arXiv record to check
+% against, and the rest were entered from their canonical venue records. zhu2025abc
+% and xie2024osworld are titled from the NeurIPS proceedings, which differ from
+% their arXiv titles. 21 of the 48 entries now carry an arXiv id; re-run the API
+% check over those before camera-ready. wang2024mint was added 2026-08-21 when the census
+% verification pass recoded MINT into the design-rationale category; entered from its ICLR
+% record, no arXiv id, so 21 of the 49 entries now carry one.
+%
+% 2026-08-29 pass over the 27 entries the author re-verified by hand: three
+% changes. gul2025mash was renamed gul2026mash and moved to year 2026 --- the
+% title in this file is the v2 (2026-04-13) title, and v1 (2025-10-01) carried a
+% different one, so the old year/title pair was inconsistent. chicco2020advantages
+% gained its DOI. bfcl2025v4scoring now points at the CHANGELOG pinned to the PR
+% 1019 merge commit 58f57e9 rather than the repo root, and records both the
+% CHANGELOG entry date (2025-07-17) and the merge date (2025-08-25); the quoted
+% weights and sentence were re-checked verbatim at that commit. The remaining 22
+% entries (pre-1990 forecast-verification items, the reporting guidelines,
+% venue-only records, and the anonymous2026trace placeholder) were checked by the
+% author the same day, closing the file except for anonymous2026trace. Two were
+% checked here against Crossref instead: murphy1996finley (Weather and Forecasting
+% 11(1), 3--20, 1996, doi 10.1175/1520-0434(1996)011<0003:TFAASE>2.0.CO;2) and
+% heidke1926 (Geografiska Annaler 8(4), 301--349, doi 10.1080/20014422.1926.11881138),
+% both as printed here. jolliffe2012verification took the one correction of that
+% pass: Jolliffe and Stephenson edit the volume, they do not author it, so the
+% field is now editor. zhu2025abc keeps the NeurIPS proceedings title (``in
+% Building''), confirmed against the OpenReview camera-ready record; the arXiv
+% posting reads ``for Building''.
+
+%
+% 2026-08-29 W8 additions (prior art the simulated panel asked for): poliak2018hypothesis,
+% gururangan2018artifacts, ferraridacrema2019progress, raji2021everything, bowman2021fix.
+% All five verified against their DBLP records this session (title, full author order, venue,
+% year, pages). raji2021everything uses the NeurIPS D&B author order, which differs from the
+% arXiv record's, per the same convention already applied to zhu2025abc and xie2024osworld.
+%
+% 2026-10-08 audit of all 54 entries (DBLP was unreachable, so venue records came from
+% OpenReview, Crossref, PMLR and jmlr.org): arXiv API for the 22 arXiv ids; Crossref for
+% the journal, ACL and ACM entries; OpenReview for the ICLR and NeurIPS papers; direct
+% fetch for the three web sources. Four fixes. wen2024abstention is TACL 13, 529--556,
+% published 2025, not 2024 (key kept). zhu2025abc had the NeurIPS title but the arXiv
+% author list; it now follows the NeurIPS 2025 D&B camera-ready (OpenReview forum
+% E58HNCqoaA): 26 authors, Narayanan added, Kellermann before Sekhon. patil2024bfcl is
+% now the ICML 2025 paper the leaderboard page asks to be cited. hal2025taubench takes
+% the page's own title. Not confirmed: jolliffe2012verification's edition and year
+% (Crossref prints 2011-12-16; Wiley's page is behind a bot check).
+
+@article{zheng2024cheating,
+  title   = {Cheating Automatic {LLM} Benchmarks: Null Models Achieve High Win Rates},
+  author  = {Zheng, Xiaosen and Pang, Tianyu and Du, Chao and Liu, Qian and Jiang, Jing and Lin, Min},
+  journal = {arXiv preprint arXiv:2410.07137},
+  year    = {2024}
+}
+
+@article{dubois2024length,
+  title   = {Length-Controlled {AlpacaEval}: A Simple Way to Debias Automatic Evaluators},
+  author  = {Dubois, Yann and Galambosi, Bal{\'a}zs and Liang, Percy and Hashimoto, Tatsunori B.},
+  journal = {arXiv preprint arXiv:2404.04475},
+  year    = {2024}
+}
+
+% Concurrent work co-authored by the present author. Replaced the anonymized
+% review-time placeholder at camera-ready; checked 2026-09-30 against the arXiv
+% record (title, full author order, year). No venue on the record yet.
+@article{wang2026safety,
+  title   = {Safety, or Just Capability? {A} Validity Audit of Agent-Safety Benchmarks},
+  author  = {Wang, Youting and Han, Xiao and Shang, Dingyan and Tang, Yuan and Liu, Bowen},
+  journal = {arXiv preprint arXiv:2607.28685},
+  year    = {2026}
+}
+
+@article{pedregosa2011scikit,
+  title   = {Scikit-learn: Machine Learning in {Python}},
+  author  = {Pedregosa, Fabian and Varoquaux, Ga{\"e}l and Gramfort, Alexandre and Michel, Vincent and Thirion, Bertrand and Grisel, Olivier and Blondel, Mathieu and Prettenhofer, Peter and Weiss, Ron and Dubourg, Vincent and Vanderplas, Jake and Passos, Alexandre and Cournapeau, David and Brucher, Matthieu and Perrot, Matthieu and Duchesnay, {\'E}douard},
+  journal = {Journal of Machine Learning Research},
+  volume  = {12},
+  pages   = {2825--2830},
+  year    = {2011}
+}
+
+@article{reuel2024betterbench,
+  title   = {{BetterBench}: Assessing {AI} Benchmarks, Uncovering Issues, and Establishing Best Practices},
+  author  = {Reuel, Anka and Hardy, Amelia and Smith, Chandler and Lamparth, Max and Hardy, Malcolm and Kochenderfer, Mykel J.},
+  journal = {Advances in Neural Information Processing Systems},
+  volume  = {37},
+  year    = {2024}
+}
+
+@article{kapoor2024agents,
+  title   = {{AI} Agents That Matter},
+  author  = {Kapoor, Sayash and Stroebl, Benedikt and Siegel, Zachary S. and Nadgir, Nitya and Narayanan, Arvind},
+  journal = {arXiv preprint arXiv:2407.01502},
+  year    = {2024}
+}
+
+% The leaderboard page now asks to be cited as this ICML 2025 paper; the older
+% misc entry's 2024 author list is no longer given on the page. Checked
+% 2026-10-08 against the PMLR record (proceedings.mlr.press/v267/patil25a).
+% Key kept so main.tex is untouched.
+@inproceedings{patil2024bfcl,
+  title     = {The {Berkeley Function Calling Leaderboard} ({BFCL}): From Tool Use to Agentic Evaluation of Large Language Models},
+  author    = {Patil, Shishir G. and Mao, Huanzhi and Yan, Fanjia and Ji, Charlie Cheng-Jie and Suresh, Vishnu and Stoica, Ion and Gonzalez, Joseph E.},
+  booktitle = {Proceedings of the 42nd International Conference on Machine Learning},
+  series    = {Proceedings of Machine Learning Research},
+  volume    = {267},
+  pages     = {48371--48392},
+  year      = {2025}
+}
+
+@misc{bfcl2025v4scoring,
+  title        = {Berkeley Function Calling Leaderboard: {V4} scoring update},
+  author       = {{Gorilla LLM Team}},
+  howpublished = {\texttt{berkeley-function-call-leaderboard/CHANGELOG.md}, \url{https://github.com/ShishirPatil/gorilla/blob/58f57e9124ea981403792dd51e00a6577e621fae/berkeley-function-call-leaderboard/CHANGELOG.md}},
+  note         = {Pull request 1019 (\url{https://github.com/ShishirPatil/gorilla/pull/1019}), CHANGELOG entry dated 2025-07-17, merged 2025-08-25; pinned at commit \texttt{58f57e9}. Overall-score weights: Live 10\%, Non-Live 10\%, Irrelevance 10\%, Multi-Turn 30\%, Agentic 40\%; ``Non-Live Acc and Live Acc score calculation now excludes the Irrelevance/Relevance category scores.'' Retrieved 2026-08-06},
+  year         = {2025}
+}
+
+@misc{hal2025taubench,
+  title        = {{HAL}: {TAU}-bench {Airline}},
+  author       = {{Princeton Language and Intelligence}},
+  howpublished = {\url{https://hal.cs.princeton.edu/taubench_airline}},
+  note         = {Original TAU-bench Tool Calling scaffold; few-shot agent results removed 2025-12-08 for test-set leakage. Retrieved 2026-08-06},
+  year         = {2025}
+}
+
+@article{yao2024tau,
+  title   = {$\tau$-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains},
+  author  = {Yao, Shunyu and Shinn, Noah and Razavi, Pedram and Narasimhan, Karthik},
+  journal = {arXiv preprint arXiv:2406.12045},
+  year    = {2024}
+}
+
+@inproceedings{shridhar2021alfworld,
+  title     = {{ALFWorld}: Aligning Text and Embodied Environments for Interactive Learning},
+  author    = {Shridhar, Mohit and Yuan, Xingdi and C{\^o}t{\'e}, Marc-Alexandre and Bisk, Yonatan and Trischler, Adam and Hausknecht, Matthew},
+  booktitle = {International Conference on Learning Representations},
+  year      = {2021}
+}
+
+@article{wang2024mmlupro,
+  title   = {{MMLU-Pro}: A More Robust and Challenging Multi-Task Language Understanding Benchmark},
+  author  = {Wang, Yubo and Ma, Xueguang and Zhang, Ge and Ni, Yuansheng and Chandra, Abhranil and Guo, Shiguang and Ren, Weiming and Arulraj, Aaran and He, Xuan and Jiang, Ziyan and Li, Tianle and Ku, Max and Wang, Kai and Zhuang, Alex and Fan, Rongqi and Yue, Xiang and Chen, Wenhu},
+  journal = {Advances in Neural Information Processing Systems},
+  volume  = {37},
+  year    = {2024}
+}
+
+@article{rein2023gpqa,
+  title   = {{GPQA}: A Graduate-Level {Google}-Proof {Q\&A} Benchmark},
+  author  = {Rein, David and Hou, Betty Li and Stickland, Asa Cooper and Petty, Jackson and Pang, Richard Yuanzhe and Dirani, Julien and Michael, Julian and Bowman, Samuel R.},
+  journal = {arXiv preprint arXiv:2311.12022},
+  year    = {2023}
+}
+
+@article{cobbe2021gsm8k,
+  title   = {Training Verifiers to Solve Math Word Problems},
+  author  = {Cobbe, Karl and Kosaraju, Vineet and Bavarian, Mohammad and Chen, Mark and Jun, Heewoo and Kaiser, Lukasz and Plappert, Matthias and Tworek, Jerry and Hilton, Jacob and Nakano, Reiichiro and Hesse, Christopher and Schulman, John},
+  journal = {arXiv preprint arXiv:2110.14168},
+  year    = {2021}
+}
+
+@inproceedings{jimenez2024swebench,
+  title     = {{SWE-bench}: Can Language Models Resolve Real-World {GitHub} Issues?},
+  author    = {Jimenez, Carlos E. and Yang, John and Wettig, Alexander and Yao, Shunyu and Pei, Kexin and Press, Ofir and Narasimhan, Karthik},
+  booktitle = {International Conference on Learning Representations},
+  year      = {2024}
+}
+
+@article{mialon2023gaia,
+  title   = {{GAIA}: A Benchmark for General {AI} Assistants},
+  author  = {Mialon, Gr{\'e}goire and Fourrier, Cl{\'e}mentine and Swift, Craig and Wolf, Thomas and LeCun, Yann and Scialom, Thomas},
+  journal = {arXiv preprint arXiv:2311.12983},
+  year    = {2023}
+}
+
+@inproceedings{zhou2024webarena,
+  title     = {{WebArena}: A Realistic Web Environment for Building Autonomous Agents},
+  author    = {Zhou, Shuyan and Xu, Frank F. and Zhu, Hao and Zhou, Xuhui and Lo, Robert and Sridhar, Abishek and Cheng, Xianyi and Ou, Tianyue and Bisk, Yonatan and Fried, Daniel and Alon, Uri and Neubig, Graham},
+  booktitle = {International Conference on Learning Representations},
+  year      = {2024}
+}
+
+@article{cohen1960kappa,
+  title   = {A Coefficient of Agreement for Nominal Scales},
+  author  = {Cohen, Jacob},
+  journal = {Educational and Psychological Measurement},
+  volume  = {20},
+  number  = {1},
+  pages   = {37--46},
+  year    = {1960}
+}
+
+@article{chicco2020advantages,
+  title   = {The Advantages of the {Matthews} Correlation Coefficient ({MCC}) over {F1} Score and Accuracy in Binary Classification Evaluation},
+  author  = {Chicco, Davide and Jurman, Giuseppe},
+  journal = {BMC Genomics},
+  volume  = {21},
+  number  = {1},
+  pages   = {6},
+  year    = {2020},
+  doi     = {10.1186/s12864-019-6413-7}
+}
+
+@article{lu2024toolsandbox,
+  title   = {{ToolSandbox}: A Stateful, Conversational, Interactive Evaluation Benchmark for {LLM} Tool Use Capabilities},
+  author  = {Lu, Jiarui and Holleis, Thomas and Zhang, Yizhe and Aumayer, Bernhard and Nan, Feng and Bai, Felix and Ma, Shuang and Ma, Shen and Li, Mengyu and Yin, Guoli and Wang, Zirui and Pang, Ruoming},
+  journal = {arXiv preprint arXiv:2408.04682},
+  year    = {2024}
+}
+
+@article{hallinan2026opaquetools,
+  title   = {{OpaqueToolsBench}: Learning Nuances of Tool Behavior Through Interaction},
+  author  = {Hallinan, Skyler and Venkatesh, Thejas and Ren, Xiang and Karimireddy, Sai Praneeth and Paranjape, Ashwin and Zhang, Yuhao and Hessel, Jack},
+  journal = {arXiv preprint arXiv:2602.15197},
+  year    = {2026}
+}
+
+@article{kirichenko2025abstentionbench,
+  title   = {{AbstentionBench}: Reasoning {LLMs} Fail on Unanswerable Questions},
+  author  = {Kirichenko, Polina and Ibrahim, Mark and Chaudhuri, Kamalika and Bell, Samuel J.},
+  journal = {arXiv preprint arXiv:2506.09038},
+  year    = {2025}
+}
+
+@article{madhusudhan2026mmaqa,
+  title   = {Knowing When Not to Answer: Evaluating Abstention in Multimodal Reasoning Systems},
+  author  = {Madhusudhan, Nishanth and Yadav, Vikas and Lacoste, Alexandre},
+  journal = {arXiv preprint arXiv:2604.14799},
+  year    = {2026}
+}
+
+@article{gul2026mash,
+  title   = {{MASH}: Modeling Abstention via Selective Help-Seeking},
+  author  = {Gul, Mustafa Omer and Cardie, Claire and Goyal, Tanya},
+  journal = {arXiv preprint arXiv:2510.01152},
+  note    = {Version 2, 2026-04-13; v1 (2025-10-01) carried a different title},
+  year    = {2026}
+}
+
+@article{zhai2026abstainr1,
+  title   = {{Abstain-R1}: Calibrated Abstention and Post-Refusal Clarification via Verifiable {RL}},
+  author  = {Zhai, Skylar and Liang, Jingcheng and Kang, Dongyeop},
+  journal = {arXiv preprint arXiv:2604.17073},
+  year    = {2026}
+}
+
+@article{wen2024abstention,
+  title   = {Know Your Limits: A Survey of Abstention in Large Language Models},
+  author  = {Wen, Bingbing and Yao, Jihan and Feng, Shangbin and Xu, Chenjun and Tsvetkov, Yulia and Howe, Bill and Wang, Lucy Lu},
+  journal = {Transactions of the Association for Computational Linguistics},
+  volume  = {13},
+  pages   = {529--556},
+  year    = {2025},
+  doi     = {10.1162/tacl_a_00754}
+}
+
+@article{papadopoulos2026coordination,
+  title   = {The Coordination Gap: Multi-Agent Alternation Metrics for Temporal Fairness in Repeated Games},
+  author  = {Papadopoulos, Nikolaos Al. and Freire, Ismael Tito and Sanchez-Fibla, Marti and Psannis, Konstantinos E.},
+  journal = {arXiv preprint arXiv:2603.05789},
+  year    = {2026}
+}
+
+@article{vandebijl2022dutchdraw,
+  title   = {The {Dutch Draw}: Constructing a Universal Baseline for Binary Prediction Models},
+  author  = {van de Bijl, Etienne and Klein, Jan and Pries, Joris and Bhulai, Sandjai and Hoogendoorn, Mark and van der Mei, Rob},
+  journal = {arXiv preprint arXiv:2203.13084},
+  year    = {2022}
+}
+
+@article{pries2023optimal,
+  title   = {The Optimal Input-Independent Baseline for Binary Classification: The {Dutch Draw}},
+  author  = {Pries, Joris and van de Bijl, Etienne and Klein, Jan and Bhulai, Sandjai and van der Mei, Rob},
+  journal = {arXiv preprint arXiv:2301.03318},
+  year    = {2023}
+}
+
+@article{schultheis2024macroatk,
+  title   = {Consistent Algorithms for Multi-Label Classification with Macro-at-$k$ Metrics},
+  author  = {Schultheis, Erik and Kot{\l}owski, Wojciech and Wydmuch, Marek and Babbar, Rohit and Borman, Strom and Dembczy{\'n}ski, Krzysztof},
+  journal = {arXiv preprint arXiv:2401.16594},
+  year    = {2024}
+}
+
+% ---------------------------------------------------------------------------
+% Added 2026-08-10 in revision. Forecast-verification and reporting-guideline
+% entries were checked against their canonical records (AMS journals for the
+% Monthly Weather Review / Weather and Forecasting items, Science for Peirce,
+% Geografiska Annaler for Heidke, BMC for the IICARus trial). Page ranges for
+% the pre-1930 items are as printed in those records.
+% ---------------------------------------------------------------------------
+
+@inproceedings{zhu2025abc,
+  title     = {Establishing Best Practices in Building Rigorous Agentic Benchmarks},
+  author    = {Zhu, Yuxuan and Jin, Tengjun and Pruksachatkun, Yada and Zhang, Andy and Liu, Shu and Cui, Sasha and Kapoor, Sayash and Longpre, Shayne and Meng, Kevin and Weiss, Rebecca and Barez, Fazl and Gupta, Rahul and Dhamala, Jwala and Merizian, Jacob and Giulianelli, Mario and Coppock, Harry and Ududec, Cozmin and Kellermann, Antony and Sekhon, Jasjeet and Steinhardt, Jacob and Schwettmann, Sarah and Narayanan, Arvind and Zaharia, Matei and Stoica, Ion and Liang, Percy and Kang, Daniel},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS) Datasets and Benchmarks Track},
+  year      = {2025},
+  note      = {arXiv:2507.02825}
+}
+
+@inproceedings{xie2024osworld,
+  title     = {{OSWorld}: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments},
+  author    = {Xie, Tianbao and Zhang, Danyang and Chen, Jixuan and Li, Xiaochuan and Zhao, Siheng and Cao, Ruisheng and Hua, Toh Jing and Cheng, Zhoujun and Shin, Dongchan and Lei, Fangyu and Liu, Yitao and Xu, Yiheng and Zhou, Shuyan and Savarese, Silvio and Xiong, Caiming and Zhong, Victor and Yu, Tao},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS) Datasets and Benchmarks Track},
+  year      = {2024},
+  note      = {arXiv:2404.07972}
+}
+
+@article{gandin1992equitable,
+  title   = {Equitable Skill Scores for Categorical Forecasts},
+  author  = {Gandin, Lev S. and Murphy, Allan H.},
+  journal = {Monthly Weather Review},
+  volume  = {120},
+  number  = {2},
+  pages   = {361--370},
+  year    = {1992}
+}
+
+@article{peirce1884,
+  title   = {The Numerical Measure of the Success of Predictions},
+  author  = {Peirce, Charles S.},
+  journal = {Science},
+  volume  = {ns-4},
+  number  = {93},
+  pages   = {453--454},
+  year    = {1884}
+}
+
+@article{murphy1996finley,
+  title   = {The {Finley} Affair: A Signal Event in the History of Forecast Verification},
+  author  = {Murphy, Allan H.},
+  journal = {Weather and Forecasting},
+  volume  = {11},
+  number  = {1},
+  pages   = {3--20},
+  year    = {1996}
+}
+
+@article{heidke1926,
+  title   = {Berechnung des Erfolges und der G{\"u}te der Windst{\"a}rkevorhersagen im Sturmwarnungsdienst},
+  author  = {Heidke, Paul},
+  journal = {Geografiska Annaler},
+  volume  = {8},
+  number  = {4},
+  pages   = {301--349},
+  year    = {1926}
+}
+
+@article{hogan2010equitability,
+  title   = {Equitability Revisited: Why the ``Equitable Threat Score'' Is Not Equitable},
+  author  = {Hogan, Robin J. and Ferro, Christopher A. T. and Jolliffe, Ian T. and Stephenson, David B.},
+  journal = {Weather and Forecasting},
+  volume  = {25},
+  number  = {2},
+  pages   = {710--726},
+  year    = {2010}
+}
+
+@book{jolliffe2012verification,
+  title     = {Forecast Verification: A Practitioner's Guide in Atmospheric Science},
+  editor    = {Jolliffe, Ian T. and Stephenson, David B.},
+  edition   = {2nd},
+  publisher = {Wiley},
+  year      = {2012},
+  doi       = {10.1002/9781119960003}
+}
+
+@article{saito2015prc,
+  title   = {The Precision--Recall Plot Is More Informative than the {ROC} Plot When Evaluating Binary Classifiers on Imbalanced Datasets},
+  author  = {Saito, Takaya and Rehmsmeier, Marc},
+  journal = {PLOS ONE},
+  volume  = {10},
+  number  = {3},
+  pages   = {e0118432},
+  year    = {2015}
+}
+
+@article{barres2025tau2,
+  title   = {$\tau^2$-Bench: Evaluating Conversational Agents in a Dual-Control Environment},
+  author  = {Barres, Victor and Dong, Honghua and Ray, Soham and Si, Xujie and Narasimhan, Karthik},
+  journal = {arXiv preprint arXiv:2506.07982},
+  year    = {2025}
+}
+
+@article{gebru2021datasheets,
+  title   = {Datasheets for Datasets},
+  author  = {Gebru, Timnit and Morgenstern, Jamie and Vecchione, Briana and Vaughan, Jennifer Wortman and Wallach, Hanna and Daum{\'e} III, Hal and Crawford, Kate},
+  journal = {Communications of the ACM},
+  volume  = {64},
+  number  = {12},
+  pages   = {86--92},
+  year    = {2021}
+}
+
+@article{pineau2021reproducibility,
+  title   = {Improving Reproducibility in Machine Learning Research (A Report from the {NeurIPS} 2019 Reproducibility Program)},
+  author  = {Pineau, Joelle and Vincent-Lamarre, Philippe and Sinha, Koustuv and Larivi{\`e}re, Vincent and Beygelzimer, Alina and d'Alch{\'e}-Buc, Florence and Fox, Emily and Larochelle, Hugo},
+  journal = {Journal of Machine Learning Research},
+  volume  = {22},
+  number  = {164},
+  pages   = {1--20},
+  year    = {2021}
+}
+
+@article{hair2019iicarus,
+  title   = {A Randomised Controlled Trial of an Intervention to Improve Compliance with the {ARRIVE} Guidelines ({IICARus})},
+  author  = {Hair, Kaitlyn and Macleod, Malcolm R. and Sena, Emily S. and {the IICARus Collaboration}},
+  journal = {Research Integrity and Peer Review},
+  volume  = {4},
+  pages   = {12},
+  year    = {2019}
+}
+
+@article{feinstein1990kappa,
+  title   = {High Agreement but Low Kappa: I. The Problems of Two Paradoxes},
+  author  = {Feinstein, Alvan R. and Cicchetti, Domenic V.},
+  journal = {Journal of Clinical Epidemiology},
+  volume  = {43},
+  number  = {6},
+  pages   = {543--549},
+  year    = {1990}
+}
+
+@inproceedings{kaushik2018reading,
+  title     = {How Much Reading Does Reading Comprehension Require? A Critical Investigation of Popular Benchmarks},
+  author    = {Kaushik, Divyansh and Lipton, Zachary C.},
+  booktitle = {Proceedings of the 2018 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  year      = {2018}
+}
+
+@article{chen2021codex,
+  title   = {Evaluating Large Language Models Trained on Code},
+  author  = {Chen, Mark and Tworek, Jerry and Jun, Heewoo and Yuan, Qiming and Pinto, Henrique Ponde de Oliveira and Kaplan, Jared and Edwards, Harri and Burda, Yuri and Joseph, Nicholas and Brockman, Greg and others},
+  journal = {arXiv preprint arXiv:2107.03374},
+  year    = {2021}
+}
+
+@article{vickers2006decision,
+  title   = {Decision Curve Analysis: A Novel Method for Evaluating Prediction Models},
+  author  = {Vickers, Andrew J. and Elkin, Elena B.},
+  journal = {Medical Decision Making},
+  volume  = {26},
+  number  = {6},
+  pages   = {565--574},
+  year    = {2006}
+}
+
+@inproceedings{zheng2024selectors,
+  title     = {Large Language Models Are Not Robust Multiple Choice Selectors},
+  author    = {Zheng, Chujie and Zhou, Hao and Meng, Fandong and Zhou, Jie and Huang, Minlie},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2024}
+}
+
+@inproceedings{wang2024mint,
+  title     = {{MINT}: Evaluating {LLMs} in Multi-turn Interaction with Tools and Language Feedback},
+  author    = {Wang, Xingyao and Wang, Zihan and Liu, Jiateng and Chen, Yangyi and Yuan, Lifan and Peng, Hao and Ji, Heng},
+  booktitle = {International Conference on Learning Representations},
+  year      = {2024}
+}
+@inproceedings{poliak2018hypothesis,
+  title     = {Hypothesis Only Baselines in Natural Language Inference},
+  author    = {Poliak, Adam and Naradowsky, Jason and Haldar, Aparajita and Rudinger, Rachel and Van Durme, Benjamin},
+  booktitle = {Proceedings of the Seventh Joint Conference on Lexical and Computational Semantics ({*SEM})},
+  pages     = {180--191},
+  year      = {2018}
+}
+@inproceedings{gururangan2018artifacts,
+  title     = {Annotation Artifacts in Natural Language Inference Data},
+  author    = {Gururangan, Suchin and Swayamdipta, Swabha and Levy, Omer and Schwartz, Roy and Bowman, Samuel R. and Smith, Noah A.},
+  booktitle = {Proceedings of the 2018 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT)},
+  pages     = {107--112},
+  year      = {2018}
+}
+@inproceedings{ferraridacrema2019progress,
+  title     = {Are We Really Making Much Progress? A Worrying Analysis of Recent Neural Recommendation Approaches},
+  author    = {Ferrari Dacrema, Maurizio and Cremonesi, Paolo and Jannach, Dietmar},
+  booktitle = {Proceedings of the 13th {ACM} Conference on Recommender Systems (RecSys)},
+  year      = {2019}
+}
+@inproceedings{raji2021everything,
+  title     = {{AI} and the Everything in the Whole Wide World Benchmark},
+  author    = {Raji, Inioluwa Deborah and Denton, Emily and Bender, Emily M. and Hanna, Alex and Paullada, Amandalynne},
+  booktitle = {Proceedings of the Neural Information Processing Systems Track on Datasets and Benchmarks},
+  year      = {2021}
+}
+@inproceedings{bowman2021fix,
+  title     = {What Will it Take to Fix Benchmarking in Natural Language Understanding?},
+  author    = {Bowman, Samuel R. and Dahl, George E.},
+  booktitle = {Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT)},
+  pages     = {4843--4855},
+  year      = {2021}
+}

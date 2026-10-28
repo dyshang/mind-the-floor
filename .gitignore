@@ -1,0 +1,33 @@
+# LaTeX build artifacts (regenerate with: pdflatex -> bibtex -> pdflatex x2)
+*.aux
+*.log
+*.out
+*.blg
+*.bbl
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.nav
+*.snm
+*.vrb
+compile.log
+
+# Build the PDF locally; do not version it.
+*.pdf
+!paper/fig1_capture_ratio.pdf
+
+# Local working notes and drafts; not part of the released artifact.
+docs/**
+paper/main_*.tex
+
+# macOS
+.DS_Store
+
+# Python
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/

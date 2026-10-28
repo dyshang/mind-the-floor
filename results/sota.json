@@ -1,0 +1,101 @@
+{
+  "_note": "SOTA reference scores for capture ratios. Retrieved 2026-08-05/06 via web search of public leaderboards. Each entry records model, source, and as_of. NOTE the distinction the paper now draws in S5: the retrieval date is 2026-08-05/06 for every entry, but as_of -- the date the figure itself is current to -- ranges from 2024-10 (frozen tau-bench board) to 2026-08-06. CAVEAT: several figures come from leaderboard aggregator sites rather than the benchmark's own leaderboard page (marked primary: false); aggregators demonstrably disagree with each other (one listed WebArena at 95.6%, above the 78.24% human baseline). REVISED 2026-08-10: entries whose ceiling is not verified, same-split and primary-source are no longer printed in the paper at all -- Table 2 shows '---' for BFCL_v4_irrelevance, the three BFCL AST categories, GAIA and ALFWorld, and Figure 1 draws those rows floor-only. Their floors are 0.000-0.007 (or, for irrelevance, the metric's maximum, where the inversion is structural), so no ratio they could enter was ever load-bearing, which is the reason to drop the denominator rather than to footnote it. The two ceilings still printed and contested are tau-bench-airline (0.460 frozen board / 0.560 HAL, giving CR in [0.68, 0.83], Table 2 section-mark; the 0.700 aggregator figure is rejected, see that entry) and tau-bench-retail (frozen board, pilcrow marker, an upper bound on its CR).",
+  "_split_discipline": "Each SOTA must be on the same split and metric as our floor: GPQA diamond (not main), tau-bench v1 original (not tau2-bench), WebArena original 812 tasks, SWE-bench Lite (not Verified/Full), GAIA validation, ALFWorld eval_out_of_distribution.",
+
+  "MMLU-Pro": {
+    "metric": "mcq_accuracy", "sota": 0.896, "model": "Qwen3.7 Max",
+    "source": "llm-stats.com/benchmarks/mmlu-pro; corroborated by benchlm.ai",
+    "as_of": "2026-08-05", "primary": false, "verified": true
+  },
+  "GPQA-diamond": {
+    "metric": "mcq_accuracy", "sota": 0.941, "model": "Gemini 3.1 Pro Preview",
+    "source": "Epoch AI GPQA Diamond benchmark page",
+    "as_of": "2026-02-19", "primary": true, "verified": true,
+    "note": "Diamond (n=198) chosen over main because essentially all published SOTA reports diamond; floor is 0.25 on either split."
+  },
+  "GSM8K": {
+    "metric": "exact_match", "sota": 0.996, "model": "MiMo-V2.5-Pro (Xiaomi)",
+    "source": "llm-stats.com/benchmarks/gsm8k",
+    "as_of": "2026-08-05", "primary": false, "verified": true,
+    "note": "Benchmark is effectively saturated; any value in 0.97-0.996 leaves the capture ratio at 0.03/0.15."
+  },
+  "SWE-bench Lite": {
+    "metric": "resolved_rate", "sota": 0.627, "model": "Claude Opus 4.6",
+    "source": "pricepertoken.com / benchlm.ai SWE-bench Lite leaderboard",
+    "as_of": "2026-07-30", "primary": false, "verified": true,
+    "note": "Floor is 0, so the capture ratio is 0 regardless of this figure."
+  },
+  "GAIA": {
+    "metric": "exact_match", "sota": 0.776, "model": "Leni (validation)",
+    "source": "reported validation-set figures; the official GAIA validation leaderboard has been CLOSED, test-set leader is a system at 92.36%",
+    "as_of": "2026-06", "primary": false, "verified": false,
+    "note": "NOT PRINTED IN THE PAPER as of 2026-08-10. Our floor is on validation; the validation board is closed, so no maintained same-split ceiling exists. Table 2 now shows '---' for SOTA and CR and reports headroom instead. Retained here only to record what was checked."
+  },
+  "WebArena": {
+    "metric": "success_rate", "sota": 0.743, "model": "WebTactix (DeepSeek v3.2)",
+    "source": "leaderboard.steel.dev WebArena leaderboard, original 812-task set; human baseline 78.24%",
+    "as_of": "2026-02", "primary": false, "verified": true
+  },
+  "BFCL_v4_irrelevance": {
+    "metric": "irrelevance_accuracy", "sota": 0.8767, "model": "LoopTool-8B",
+    "source": "LoopTool paper (arXiv:2511.09148) reporting BFCL-v3 Irrelevance; xLAM-2-70b-fc-r at 0.7891",
+    "as_of": "2025-11", "primary": false, "verified": "cross_version_disclosed",
+    "note": "LOAD-BEARING and the weakest-sourced entry: it is a v3 irrelevance figure, while our floor is measured on v4 files. NOTE the claim does not actually depend on it: the floor equals 1.0, which is the metric's maximum, so CR = 1/SOTA >= 1 for any model that is not perfect on the slice. RECHECKED 2026-08-06: no v4 irrelevance column is exposed by gorilla.cs.berkeley.edu (JS table, no per-category columns rendered), llm-stats bfcl-v4 (overall composite only, top 0.750 Qwen3.7 Max), or benchlm.ai. No same-split v4 ceiling exists to substitute. REVISED 2026-08-10: rather than print a cross-version ratio, the paper now shows '---' for this row's SOTA and CR and lets the structural statement (floor = the metric's maximum, so headroom is zero) carry it. This figure is retained only as the record of what was searched."
+  },
+  "_BFCL_v4_composite_weights": {
+    "irrelevance_weight": 0.10,
+    "weights": {"live": 0.10, "non_live": 0.10, "irrelevance": 0.10, "multi_turn": 0.30, "agentic": 0.40},
+    "excluded_from_live_and_non_live_columns": true,
+    "source": "gorilla CHANGELOG.md, berkeley-function-call-leaderboard, PR 1019, 2025-07-17",
+    "quote": "Non-Live Acc and Live Acc score calculation now excludes the Irrelevance/Relevance category scores.",
+    "as_of": "2026-08-06", "primary": true, "verified": true,
+    "note": "Sources the S5 claim that the irrelevance inversion propagates to the v4 headline ranking at 10% weight. Both halves of that sentence (excluded from the Live/Non-Live columns; 10% of the composite) are confirmed by this changelog entry. Cited as bfcl2025v4scoring."
+  },
+  "BFCL_v4_simple_python": {
+    "metric": "ast_accuracy", "sota": 0.95, "model": "unresolved",
+    "source": "per-category AST columns not exposed by aggregators; BFCL v4 composite leader is Qwen3.7 Max at 0.750",
+    "as_of": "2026-08-06", "primary": false, "verified": false,
+    "note": "NOT PRINTED IN THE PAPER as of 2026-08-10: model 'unresolved' means these are author estimates, and an estimate that cannot change a conclusion is one to delete rather than to footnote. Table 2 shows '---'. Read the per-category column off gorilla.cs.berkeley.edu/leaderboard.html (JS table) if an exact figure is ever wanted."
+  },
+  "BFCL_v4_live_simple": {
+    "metric": "ast_accuracy", "sota": 0.85, "model": "unresolved",
+    "source": "see BFCL_v4_simple_python", "as_of": "2026-08-06",
+    "primary": false, "verified": false
+  },
+  "BFCL_v4_live_multiple": {
+    "metric": "ast_accuracy", "sota": 0.80, "model": "unresolved",
+    "source": "see BFCL_v4_simple_python", "as_of": "2026-08-06",
+    "primary": false, "verified": false
+  },
+  "ALFWorld": {
+    "metric": "success_rate", "sota": 0.987, "model": "AEC (WALL-E 2.0 at 0.983)",
+    "source": "recent ALFWorld agent papers; unseen/OOD split",
+    "as_of": "2026", "primary": false, "verified": false,
+    "note": "NOT PRINTED IN THE PAPER as of 2026-08-10: sourced to agent papers rather than a maintained board (verified: false). Table 2 shows '---' and reports headroom (0.993 / 1.000) instead."
+  },
+  "tau-bench-retail": {
+    "metric": "pass_hat_1", "sota": 0.692, "model": "Claude 3.5 Sonnet (20241022)",
+    "source": "official sierra-research/tau-bench README leaderboard (v1 original)",
+    "as_of": "2024-10", "primary": true, "verified": true,
+    "note": "The official board is frozen at the late-2024 model set. Newer models are reported mostly on tau2-bench, a different benchmark; using the frozen board keeps split and harness matched to our floor. If a newer same-split retail figure surfaces, it lowers this CR."
+  },
+  "tau-bench-airline": {
+    "metric": "pass_hat_1", "sota": 0.560, "model": "o4-mini high (April 2025)",
+    "agent": "TAU-bench Tool Calling (the original v1 scaffold)",
+    "source": "https://hal.cs.princeton.edu/taubench_airline",
+    "leakage_cleanup": "few-shot agent results removed 2025-12-08 for test-set examples in the demonstration file",
+    "as_of": "2026-08-06", "primary": true, "verified": true,
+    "frozen_board_cross_check": {
+      "sota": 0.460, "model": "Claude 3.5 Sonnet (20241022)",
+      "source": "official sierra-research/tau-bench README leaderboard (v1 original)",
+      "as_of": "2024-10", "primary": true, "verified": true, "cr": 0.826
+    },
+    "rejected_2026_08_10": {
+      "sota": 0.700, "model": "Claude Sonnet 4.5",
+      "source": "llm-stats.com/benchmarks/tau-bench-airline, labelled TAU-bench Airline",
+      "reason": "PROVENANCE FAILURE, not a sourcing preference. The 0.700 airline score is reported in the same row as retail 0.862 and telecom 0.980. The telecom domain exists only in tau2-bench (arXiv:2506.07982), which ports airline and retail into a dual-control environment, so the row is a tau2-bench result relabelled by the aggregator; the same source records a prompt addendum to the airline agent policy. sota.json's own _split_discipline rule (tau-bench v1 original, not tau2-bench) forbids it. Earlier drafts kept it BECAUSE it was the most conservative available ceiling (CR 0.54); dropping it moves our headline number AGAINST our own conservatism, to CR 0.68.",
+      "reusable_tell": "a single row reporting airline + retail + telecom is tau2-bench, whatever the column header says"
+    },
+    "note": "Drives the airline capture ratio. Two ceilings are attributable to the original v1 harness: 0.460 (frozen official board) -> CR 0.83, and 0.560 (HAL, original Tool Calling scaffold, leakage-cleaned Dec 2025) -> CR 0.68. We quote 0.560 because it is the best-documented same-harness figure, and state CR in [0.68, 0.83] wherever the number carries argumentative weight. Cited in-text as hal2025taubench; appendix C.6(i) sets out the exclusion above."
+  }
+}

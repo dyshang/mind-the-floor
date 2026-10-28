@@ -1,0 +1,26 @@
+{
+  "_note": "Provenance for the execution-free tau-bench floor of appendix C.3. The per-task predicates in tau_<env>_static_floor.jsonl are derived artifacts: regenerating them needs tau-bench installed, but checking the floor and the agreement figure against them does not. task_set_sha256 is the drift signal -- if upstream edits the task set it moves, and the recorded counts are stale rather than wrong. scripts/check_appendix_numbers.py verifies the counts offline.",
+  "generated": "2026-08-24",
+  "tau_bench_version": "0.1.0",
+  "generator": "scripts/executed/tau_static_floor.py",
+  "envs": {
+    "airline": {
+      "n_tasks": 50,
+      "static_floor": 19,
+      "task_set_sha256": "0df25ad5e3725f166f4264414dddbb5db124007741b2e77a01ab4da085bccbef",
+      "per_task": "results/tau_airline_static_floor.jsonl",
+      "replay_actions_raised": 0,
+      "executed_transfer": 19,
+      "agreement": 50
+    },
+    "retail": {
+      "n_tasks": 115,
+      "static_floor": 7,
+      "task_set_sha256": "04a5ef9ee52a69eb34b4c13b80b1d1ed63706f5f928080a0cb12758d3c8c0e4b",
+      "per_task": "results/tau_retail_static_floor.jsonl",
+      "replay_actions_raised": 0,
+      "executed_transfer": 7,
+      "agreement": 115
+    }
+  }
+}

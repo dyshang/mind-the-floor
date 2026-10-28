@@ -1,0 +1,39 @@
+# Dependencies for reproducing the paper's tables and figure.
+#
+# The `floorcheck` package itself has NO dependencies -- that is deliberate, and
+# `pip install -e floorcheck/` is all a reader needs to recompute any closed-form
+# floor. This file covers the *audit* pipeline instead: the scripts that rebuild
+# Table 3 and Figure 1 from the benchmarks' own data.
+#
+#   pip install -r requirements-repro.txt
+
+# --- analytic floors + figure (scripts/analytic_floors.py, collect_results.py,
+#     make_figure1.py). Enough to regenerate Table 3 and Figure 1 end to end.
+matplotlib>=3.8
+datasets>=2.19
+
+# --- executed floors (scripts/executed/*). Each needs that benchmark's own
+#     harness, installed from its upstream repository rather than PyPI. These are
+#     only required to re-run the executed group; the per-episode results are
+#     released as JSONL under results/, so the tables rebuild without them.
+#
+#   tau-bench   https://github.com/sierra-research/tau-bench
+#               (scripts/executed/tau_bench_degenerate.py, tau_static_floor.py)
+#   alfworld    https://github.com/alfworld/alfworld  (TextWorld engine)
+#               (scripts/executed/alfworld_degenerate.py)
+#               PIN: alfworld==0.4.2, textworld==1.7.0, and Python <= 3.12.
+#               The Python bound is load-bearing, not caution. TextWorld's
+#               grammar evaluator (textworld/envs/pddl/textgen) writes the
+#               rule variables in with locals().update() and then calls
+#               eval() with no explicit namespace. PEP 667 made locals() an
+#               independent snapshot in 3.13, so the update is a no-op there
+#               and every ALFWorld episode dies on NameError: name 'r' is not
+#               defined. Under 3.11 the released seed-0 run reproduces to the
+#               episode: 134/134 on success and 134/134 on step count.
+#   bfcl_eval   https://github.com/ShishirPatil/gorilla
+#               berkeley-function-call-leaderboard/
+#               (scripts/executed/bfcl_degenerate.py, bfcl_score.py)
+
+# scripts/label_aware_webarena.py: WebArena tokenizes one-character references with
+# nltk word_tokenize (needs the punkt_tab data: python -m nltk.downloader punkt_tab)
+nltk

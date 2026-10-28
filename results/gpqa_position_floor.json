@@ -1,0 +1,19 @@
+{
+  "_note": "Constant-position policy on a *realized* GPQA option shuffle. The reported floor of 0.250 is the expectation over shuffles; on any one shuffle the best constant-position policy scores max_j p_hat_j, whose mean is the 'best_position' block below. Standard harnesses reshuffle per evaluation run, so the excess is not exploitable ex ante -- it is a realization band, not a higher floor. Reported so the band is stated rather than assumed away.",
+  "n": 198,
+  "k": 4,
+  "reps": 200000,
+  "seed": 0,
+  "uniform_floor": 0.25,
+  "best_position": {
+    "mean": 0.2869519191919192,
+    "median": 0.2828282828282828,
+    "p05": 0.26262626262626265,
+    "p95": 0.3181818181818182,
+    "sd": 0.018013760354701706,
+    "min": 0.25252525252525254,
+    "max": 0.41414141414141414,
+    "excess_over_uniform": 0.0369519191919192
+  },
+  "fixed_position_sd": 0.030772872744833184
+}

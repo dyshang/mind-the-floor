@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "floorcheck"
+version = "0.1.0"
+description = "Closed-form degenerate-baseline floors for benchmark metrics"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.9"
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[project.scripts]
+floorcheck = "floorcheck.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["floorcheck*"]

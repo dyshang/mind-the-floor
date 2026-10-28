@@ -1,0 +1,167 @@
+{
+ "_note": "Evidence for the WebArena floor: the task_ids whose reference answer is 'N/A', i.e. the tasks WebArena marks unachievable. Anyone can check this list against the upstream config file; scripts/analytic_floors.py cross-checks it when given --webarena-config. We record the derived ids rather than vendoring the 880 KB upstream config, which is third-party data that would go stale silently.",
+ "source": "web-arena-x/webarena, config_files/test.raw.json",
+ "retrieved": "2026-08-05, re-verified 2026-08-08",
+ "marker": "eval.reference_answers.fuzzy_match == 'N/A' (WebArena's string evaluator special-cases an 'N/A' reference to exact match rather than LLM fuzzy match)",
+ "n_tasks": 812,
+ "n_unachievable": 36,
+ "floor": 0.04433497536945813,
+ "task_ids": [
+  22,
+  24,
+  101,
+  115,
+  166,
+  168,
+  183,
+  191,
+  201,
+  218,
+  219,
+  225,
+  234,
+  235,
+  247,
+  253,
+  301,
+  302,
+  313,
+  368,
+  376,
+  382,
+  491,
+  723,
+  726,
+  783,
+  789,
+  790,
+  791,
+  792,
+  793,
+  794,
+  795,
+  796,
+  797,
+  798
+ ],
+ "eval_types_verified": {
+  "checked": "2026-08-24",
+  "why": "A constant 'N/A' only scores these tasks if nothing else in their eval has to pass too. Recorded per task so the claim is auditable offline, without vendoring the upstream config.",
+  "per_task_eval_types": {
+   "22": [
+    "string_match"
+   ],
+   "24": [
+    "string_match"
+   ],
+   "101": [
+    "string_match"
+   ],
+   "115": [
+    "string_match"
+   ],
+   "166": [
+    "string_match"
+   ],
+   "168": [
+    "string_match"
+   ],
+   "183": [
+    "string_match"
+   ],
+   "191": [
+    "string_match"
+   ],
+   "201": [
+    "string_match"
+   ],
+   "218": [
+    "string_match"
+   ],
+   "219": [
+    "string_match"
+   ],
+   "225": [
+    "string_match"
+   ],
+   "234": [
+    "string_match"
+   ],
+   "235": [
+    "string_match"
+   ],
+   "247": [
+    "string_match"
+   ],
+   "253": [
+    "string_match"
+   ],
+   "301": [
+    "string_match"
+   ],
+   "302": [
+    "string_match"
+   ],
+   "313": [
+    "string_match"
+   ],
+   "368": [
+    "string_match"
+   ],
+   "376": [
+    "string_match"
+   ],
+   "382": [
+    "string_match"
+   ],
+   "491": [
+    "string_match"
+   ],
+   "723": [
+    "string_match"
+   ],
+   "726": [
+    "string_match"
+   ],
+   "783": [
+    "string_match"
+   ],
+   "789": [
+    "string_match"
+   ],
+   "790": [
+    "string_match"
+   ],
+   "791": [
+    "string_match"
+   ],
+   "792": [
+    "string_match"
+   ],
+   "793": [
+    "string_match"
+   ],
+   "794": [
+    "string_match"
+   ],
+   "795": [
+    "string_match"
+   ],
+   "796": [
+    "string_match"
+   ],
+   "797": [
+    "string_match"
+   ],
+   "798": [
+    "string_match"
+   ]
+  },
+  "all_string_match_only": true,
+  "with_program_html": [],
+  "reference_answers_keys": [
+   "fuzzy_match"
+  ],
+  "note": "Task 247 carries a reference_url field, but url_match is absent from its eval_types, so WebArena never reads it; it is inert rather than an extra condition. No task in the set carries a program_html check."
+ }
+}

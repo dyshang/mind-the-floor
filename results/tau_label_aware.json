@@ -1,0 +1,65 @@
+{
+  "airline": {
+    "n": 50,
+    "task_set_sha256": "0df25ad5e3725f166f4264414dddbb5db124007741b2e77a01ab4da085bccbef",
+    "passes_task_indices": [
+      12,
+      13,
+      15,
+      17,
+      18,
+      21,
+      24,
+      29,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      44,
+      47,
+      48,
+      49
+    ],
+    "never_write_no_output (paper's floor)": 19,
+    "label_aware_constant (predicate)": 20,
+    "label_aware_constant (package reward)": 20,
+    "message_chars": 35,
+    "db_unchanged_but_needs_output": [
+      44
+    ],
+    "outputs_with_comma": []
+  },
+  "retail": {
+    "n": 115,
+    "task_set_sha256": "04a5ef9ee52a69eb34b4c13b80b1d1ed63706f5f928080a0cb12758d3c8c0e4b",
+    "passes_task_indices": [
+      10,
+      12,
+      24,
+      25,
+      50,
+      57,
+      62,
+      65,
+      67,
+      68,
+      106
+    ],
+    "never_write_no_output (paper's floor)": 7,
+    "label_aware_constant (predicate)": 11,
+    "label_aware_constant (package reward)": 11,
+    "message_chars": 463,
+    "db_unchanged_but_needs_output": [
+      24,
+      62,
+      67,
+      68
+    ],
+    "outputs_with_comma": []
+  },
+  "generator": "scripts/executed/tau_label_aware.py"
+}

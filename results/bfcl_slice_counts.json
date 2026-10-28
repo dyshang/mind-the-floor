@@ -1,0 +1,38 @@
+{
+  "_note": "Slice sizes behind the pooled BFCL detection task. The paper states these are read directly from the released v4 files; this records the counts, each file's sha256, and its URL so the claim is checkable without cloning gorilla. scripts/check_appendix_numbers.py verifies the paper's derived figures against them.",
+  "retrieved": "2026-08-05 (clone), re-verified 2026-08-09 against the URLs below",
+  "format": "one JSON record per line; the files carry no trailing newline, so `wc -l` undercounts by one",
+  "v4": {
+    "BFCL_v4_irrelevance": {
+      "records": 240,
+      "sha256": "2b6ed4c2e992cdcf5f1678a701851f944bef7550ee026ed1ddb89efed5be01a6",
+      "url": "https://raw.githubusercontent.com/ShishirPatil/gorilla/main/berkeley-function-call-leaderboard/bfcl_eval/data/BFCL_v4_irrelevance.json"
+    },
+    "BFCL_v4_live_irrelevance": {
+      "records": 884,
+      "sha256": "6559fda2beaceb609a2cd2e504c65b4a56cb448e1ef88fddfd199e163d163349",
+      "url": "https://raw.githubusercontent.com/ShishirPatil/gorilla/main/berkeley-function-call-leaderboard/bfcl_eval/data/BFCL_v4_live_irrelevance.json"
+    },
+    "BFCL_v4_live_relevance": {
+      "records": 16,
+      "sha256": "e03f9e241657a137cba48a89ee12f47bf3fcb7e4f6274263e9c699a0c974203a",
+      "url": "https://raw.githubusercontent.com/ShishirPatil/gorilla/main/berkeley-function-call-leaderboard/bfcl_eval/data/BFCL_v4_live_relevance.json"
+    }
+  },
+  "derived": {
+    "abstain_correct_pooled": 1124,
+    "call_correct": 16,
+    "n_pooled": 1140,
+    "positive_rate": 0.014035087719298246,
+    "raw_accuracy_constant_abstain": 0.9859649122807017,
+    "imbalance_ratio": 70.25
+  },
+  "v3_comparison": {
+    "_note": "v4 replaced these filenames in place, so the v3 contents are not at a stable public path; counts below come from the v3 release (HF mirror) and are quoted in the paper as a cross-check, not re-derived by this repository.",
+    "irrelevance": 240,
+    "live_irrelevance": 882,
+    "live_relevance": 18,
+    "live_total": 900,
+    "verified_by": "author, from a cached v3 copy (2026-08-08)"
+  }
+}

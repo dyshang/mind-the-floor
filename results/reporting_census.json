@@ -1,0 +1,359 @@
+{
+ "_note": "Census of degenerate-baseline reporting practice. Supports the claim in S1 that a benchmark's degenerate floor is rarely reported beside its headline score. The claim was previously asserted; this file is the measurement. Coding sheet is released in full so the four fractions can be rechecked against the same papers.",
+ "frame": {
+  "definition": "Benchmark release papers for agentic, tool-use, or interactive-agent evaluation published 2023-2026, plus the nine benchmarks of our own audit panel (which adds four pre-2023 or non-agentic releases: ALFWorld, GSM8K, WebShop, Gorilla/BFCL). Purposive, not random: benchmarks were selected for being in wide use as agent evaluations, and the candidate list is released here in full so the frame is inspectable.",
+  "not_a_random_sample": true,
+  "n_frame": 29,
+  "n_coded": 29,
+  "n_unresolved": 0,
+  "completeness": "Every paper in the frame is coded. The first pass left tau-bench, OSWorld and AgentBoard uncoded because arXiv HTML conversion failed and the PDFs exceeded the fetch limit; they were coded 2026-08-11 from the arXiv PDFs converted locally. Leaving tau-bench uncoded was the worse error of the two, since it is the benchmark this paper audits most closely."
+ },
+ "coding_protocol": {
+  "input_oblivious_baseline": "a policy that ignores the task input entirely: uniform random guessing, always predicting the majority or modal class, empty output, no-op, always abstain or refuse, or a constant action. A human baseline, a weaker LLM, a retrieval system, a rule-based system that reads the instruction, and an ablated model are all NOT input-oblivious.",
+  "questions": {
+   "a_reports": "Does the paper report a NUMERIC score for any input-oblivious baseline on its own benchmark?",
+   "b_location": "abstract / headline results table / prose or appendix only / design rationale only / absent",
+   "c_computed": "computed on the released split, or a nominal theoretical value such as 'chance = 25%'",
+   "d_normalized": "is any headline score normalized or chance-corrected against it"
+  },
+  "adjudication": "Full texts were extracted automatically and coded against the questions above; every 'yes' was then adjudicated by hand against the quoted evidence. Three automatic 'yes' codings were overturned to 'no' because the named baseline reads the task input and so falls outside the definition: WebArena (human baseline, 78.24%), TravelPlanner (greedy search over the query's constraints), WebShop (rule baseline that searches the instruction text). Ambiguity was otherwise resolved in the direction that counts a paper as REPORTING, i.e. against our own thesis.",
+  "coded_by": "authors, from released full texts; see per-paper evidence field",
+  "e_design_rationale_rule": "A paper counts under (e) when it reasons about something an input-oblivious policy could exploit -- a chance rate, or a channel that scores abstention or refusal as correct -- without reporting what such a policy would score. Defining such a channel is not enough on its own: WindowsAgentArena inherits OSWorld's infeasible-task reward but never discusses what an always-FAIL policy collects, and is coded absent.",
+  "verification_pass": "Every one of the 29 was re-coded a second time against question (a) from the arXiv full texts, blind to the first pass's codes. The second pass was performed by an AI assistant, not by a second human coder, and is disclosed as such: it is a verification pass, not an independent replication. Both passes also share the same automated text-extraction step, so a baseline that extraction misses would be missed twice. Record: results/census_verification.json."
+ },
+ "results": {
+  "a_reports_numeric_oblivious_baseline": {
+   "count": 1,
+   "of": 29,
+   "fraction": 0.034
+  },
+  "b_in_abstract_or_headline_table": {
+   "count": 1,
+   "of": 29,
+   "fraction": 0.034
+  },
+  "c_computed_on_released_split": {
+   "count": 0,
+   "of": 29,
+   "fraction": 0.0
+  },
+  "d_headline_normalized_against_it": {
+   "count": 0,
+   "of": 29,
+   "fraction": 0.0
+  },
+  "e_chance_rate_used_as_design_rationale_without_a_score": {
+   "count": 4,
+   "of": 29,
+   "fraction": 0.138,
+   "papers": [
+    "MMLU-Pro",
+    "WebArena",
+    "OSWorld",
+    "MINT"
+   ],
+   "rule": "coding_protocol.e_design_rationale_rule"
+  },
+  "a_reports_agentic_only": {
+   "count": 0,
+   "of": 26,
+   "excluded_static_qa": [
+    "GPQA",
+    "GSM8K",
+    "MMLU-Pro"
+   ],
+   "note": "The single positive coding (GPQA) is a static question-answering release, not an agentic one. Restricted to the frame members the paper's own section 4 counts as agentic, no release reports a numeric input-oblivious baseline. Both denominators are printed.",
+   "yes_members": []
+  }
+ },
+ "papers": [
+  {
+   "benchmark": "GPQA",
+   "arxiv": "2311.12022",
+   "in_panel": true,
+   "a_reports": "yes",
+   "b_location": "results table and prose",
+   "c_computed": "nominal (1/K = 25%)",
+   "d_normalized": "no",
+   "evidence": "states 25% accuracy is random chance for its four-option format; model scores are read as above chance but below expert accuracy"
+  },
+  {
+   "benchmark": "MMLU-Pro",
+   "arxiv": "2406.01574",
+   "in_panel": true,
+   "a_reports": "no",
+   "b_location": "design rationale only",
+   "c_computed": "n/a",
+   "d_normalized": "no",
+   "evidence": "motivates ten options rather than four by the lower probability of a correct guess, but reports no baseline score"
+  },
+  {
+   "benchmark": "WebArena",
+   "arxiv": "2307.13854",
+   "in_panel": true,
+   "a_reports": "no",
+   "b_location": "design rationale only",
+   "c_computed": "n/a",
+   "d_normalized": "no",
+   "evidence": "documents unachievable tasks whose reference answer is N/A, but reports no score for a constant-N/A policy; the 78.24% figure is a human baseline",
+   "adjudicated": "automatic coding proposed yes on the human baseline; overturned"
+  },
+  {
+   "benchmark": "SWE-bench",
+   "arxiv": "2310.06770",
+   "in_panel": true,
+   "a_reports": "no",
+   "b_location": "absent",
+   "c_computed": "n/a",
+   "d_normalized": "no",
+   "evidence": "compares LM systems only; no empty-patch or no-op score"
+  },
+  {
+   "benchmark": "GAIA",
+   "arxiv": "2311.12983",
+   "in_panel": true,
+   "a_reports": "no",
+   "b_location": "absent",
+   "c_computed": "n/a",
+   "d_normalized": "no",
+   "evidence": "human and search baselines only; no constant-answer score"
+  },
+  {
+   "benchmark": "GSM8K",
+   "arxiv": "2110.14168",
+   "in_panel": true,
+   "a_reports": "no",
+   "b_location": "absent",
+   "c_computed": "n/a",
+   "d_normalized": "no"
+  },
+  {
+   "benchmark": "ALFWorld",
+   "arxiv": "2010.03768",
+   "in_panel": true,
+   "a_reports": "no",
+   "b_location": "absent",
+   "c_computed": "n/a",
+   "d_normalized": "no"
+  },
+  {
+   "benchmark": "BFCL (Gorilla)",
+   "arxiv": "2305.15334",
+   "in_panel": true,
+   "a_reports": "no",
+   "b_location": "absent",
+   "c_computed": "n/a",
+   "d_normalized": "no",
+   "note": "BFCL itself is released as a leaderboard and blog series rather than a paper; the Gorilla paper is coded as its citable release"
+  },
+  {
+   "benchmark": "tau-bench",
+   "arxiv": "2406.12045",
+   "in_panel": true,
+   "a_reports": "no",
+   "b_location": "absent",
+   "c_computed": "n/a",
+   "d_normalized": "no",
+   "evidence": "The only baseline named is 'the most advanced baseline: gpt-4o function calling agent'; every reported system is an LLM agent. The paper motivates pass^k as a reliability metric but never asks what a policy ignoring the dialogue would score.",
+   "note": "Coded 2026-08-11 from the arXiv PDF. Sharpest entry in the census: transfer_to_human_agents, the constant call our audit measures at 19/50 on airline, appears in this paper only as a tool name in the action space and once in an example trajectory. The floor was inside their own action space, unmeasured."
+  },
+  {
+   "benchmark": "AgentBench",
+   "arxiv": "2308.03688",
+   "in_panel": false,
+   "a_reports": "no",
+   "b_location": "absent",
+   "c_computed": "n/a",
+   "d_normalized": "no"
+  },
+  {
+   "benchmark": "ToolLLM / ToolBench",
+   "arxiv": "2307.16789",
+   "in_panel": false,
+   "a_reports": "no",
+   "b_location": "absent",
+   "c_computed": "n/a",
+   "d_normalized": "no",
+   "evidence": "its 'Finish by Giving Up' path is a reward-semantics decision, not a reported baseline score"
+  },
+  {
+   "benchmark": "API-Bank",
+   "arxiv": "2304.08244",
+   "in_panel": false,
+   "a_reports": "no",
+   "b_location": "absent",
+   "c_computed": "n/a",
+   "d_normalized": "no"
+  },
+  {
+   "benchmark": "WebShop",
+   "arxiv": "2207.01206",
+   "in_panel": false,
+   "a_reports": "no",
+   "b_location": "absent",
+   "c_computed": "n/a",
+   "d_normalized": "no",
+   "evidence": "reports a rule baseline, but it searches the instruction text and so reads the input",
+   "adjudicated": "automatic coding proposed yes; overturned"
+  },
+  {
+   "benchmark": "Mind2Web",
+   "arxiv": "2306.06070",
+   "in_panel": false,
+   "a_reports": "no",
+   "b_location": "absent",
+   "c_computed": "n/a",
+   "d_normalized": "no"
+  },
+  {
+   "benchmark": "WebVoyager",
+   "arxiv": "2401.13919",
+   "in_panel": false,
+   "a_reports": "no",
+   "b_location": "absent",
+   "c_computed": "n/a",
+   "d_normalized": "no"
+  },
+  {
+   "benchmark": "VisualWebArena",
+   "arxiv": "2401.13649",
+   "in_panel": false,
+   "a_reports": "no",
+   "b_location": "absent",
+   "c_computed": "n/a",
+   "d_normalized": "no"
+  },
+  {
+   "benchmark": "WorkArena",
+   "arxiv": "2403.07718",
+   "in_panel": false,
+   "a_reports": "no",
+   "b_location": "absent",
+   "c_computed": "n/a",
+   "d_normalized": "no"
+  },
+  {
+   "benchmark": "MINT",
+   "arxiv": "2309.10691",
+   "in_panel": false,
+   "a_reports": "no",
+   "b_location": "design rationale only",
+   "c_computed": "n/a",
+   "d_normalized": "no",
+   "evidence": "filters the dataset against an oblivious policy without pricing one: \"we filter out instances that a random guess baseline can do well, e.g., multiple-choice instances with < 4 options\"",
+   "adjudicated": "first pass coded b_location absent; the verification pass overturned it to design rationale only. Question (a) is unaffected: no score is reported."
+  },
+  {
+   "benchmark": "AppWorld",
+   "arxiv": "2407.18901",
+   "in_panel": false,
+   "a_reports": "no",
+   "b_location": "absent",
+   "c_computed": "n/a",
+   "d_normalized": "no"
+  },
+  {
+   "benchmark": "TravelPlanner",
+   "arxiv": "2402.01622",
+   "in_panel": false,
+   "a_reports": "no",
+   "b_location": "absent",
+   "c_computed": "n/a",
+   "d_normalized": "no",
+   "evidence": "its greedy-search baseline optimizes against the query's own constraints and so reads the input",
+   "adjudicated": "automatic coding proposed yes; overturned"
+  },
+  {
+   "benchmark": "ScienceAgentBench",
+   "arxiv": "2410.05080",
+   "in_panel": false,
+   "a_reports": "no",
+   "b_location": "absent",
+   "c_computed": "n/a",
+   "d_normalized": "no"
+  },
+  {
+   "benchmark": "MLAgentBench",
+   "arxiv": "2310.03302",
+   "in_panel": false,
+   "a_reports": "no",
+   "b_location": "absent",
+   "c_computed": "n/a",
+   "d_normalized": "no"
+  },
+  {
+   "benchmark": "TheAgentCompany",
+   "arxiv": "2412.14161",
+   "in_panel": false,
+   "a_reports": "no",
+   "b_location": "absent",
+   "c_computed": "n/a",
+   "d_normalized": "no"
+  },
+  {
+   "benchmark": "ToolSandbox",
+   "arxiv": "2408.04682",
+   "in_panel": false,
+   "a_reports": "no",
+   "b_location": "absent",
+   "c_computed": "n/a",
+   "d_normalized": "no"
+  },
+  {
+   "benchmark": "tau2-bench",
+   "arxiv": "2506.07982",
+   "in_panel": false,
+   "a_reports": "no",
+   "b_location": "absent",
+   "c_computed": "n/a",
+   "d_normalized": "no"
+  },
+  {
+   "benchmark": "AgentDojo",
+   "arxiv": "2406.13352",
+   "in_panel": false,
+   "a_reports": "no",
+   "b_location": "absent",
+   "c_computed": "n/a",
+   "d_normalized": "no"
+  },
+  {
+   "benchmark": "WindowsAgentArena",
+   "arxiv": "2409.08264",
+   "in_panel": false,
+   "a_reports": "no",
+   "b_location": "absent",
+   "c_computed": "n/a",
+   "d_normalized": "no"
+  },
+  {
+   "benchmark": "OSWorld",
+   "arxiv": "2404.07972",
+   "in_panel": false,
+   "a_reports": "no",
+   "b_location": "design rationale only",
+   "c_computed": "n/a",
+   "d_normalized": "no",
+   "evidence": "The action space includes FAIL, 'agent decides the task is infeasible', and the reward 'awards a value of 1 ... if the agent accurately predicts failure for an infeasible task'. 30 of 369 tasks (8.1%) are infeasible. The paper observes that agents 'tend to easily output FAIL and refuse to continue trying', which 'leads to some false positives in infeasible tasks', and parenthesises 'considering we have infeasible examples for agent's luckiness'. It never reports what a constant-FAIL policy scores.",
+   "derived_floor_not_reported": {
+    "policy": "constant FAIL (declare every task infeasible)",
+    "floor": 0.0813,
+    "basis": "30 infeasible of 369 tasks, both stated in the paper",
+    "best_reported_agent": 0.1224,
+    "capture_ratio": 0.66,
+    "band": "B (structural: fixed by the reward rule, not by the label file)",
+    "status": "NOT AUDITED IN THIS PAPER. Derived from the OSWorld paper's own stated reward rule and task counts, not from the released config file or an executed run, so it does not meet this paper's bar for a Table 2 row. Recorded here because it is the strongest thing the census turned up: the clearest documented case of an author noticing the channel and not measuring it."
+   }
+  },
+  {
+   "benchmark": "AgentBoard",
+   "arxiv": "2401.13178",
+   "in_panel": false,
+   "a_reports": "no",
+   "b_location": "absent",
+   "c_computed": "n/a",
+   "d_normalized": "no",
+   "evidence": "Introduces a fine-grained progress rate because binary success 'treats all failures as equivalent'; the motivation is metric resolution, not a floor. Every compared system is an LLM agent, and the only occurrence of 'random' is the reproducibility checklist's random-seed question."
+  }
+ ]
+}

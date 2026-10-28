@@ -1,0 +1,45 @@
+[
+  {
+    "category": "simple_python",
+    "n": 400,
+    "correct": 0,
+    "ast_accuracy": 0.0,
+    "policy": "constant-modal-function",
+    "checker": "official bfcl_eval ast_checker",
+    "per_entry": "results/bfcl_eval_simple_python.jsonl"
+  },
+  {
+    "category": "live_simple",
+    "n": 258,
+    "correct": 0,
+    "ast_accuracy": 0.0,
+    "policy": "constant-modal-function",
+    "checker": "official bfcl_eval ast_checker",
+    "per_entry": "results/bfcl_eval_live_simple.jsonl"
+  },
+  {
+    "category": "live_multiple",
+    "n": 1053,
+    "correct": 0,
+    "ast_accuracy": 0.0,
+    "policy": "constant-modal-function",
+    "checker": "official bfcl_eval ast_checker",
+    "per_entry": "results/bfcl_eval_live_multiple.jsonl"
+  },
+  {
+    "category": "irrelevance",
+    "n": 240,
+    "correct": 240,
+    "ast_accuracy": 1.0,
+    "policy": "constant-no-call (structural)",
+    "checker": "structural: metric counts abstention as correct"
+  },
+  {
+    "category": "live_irrelevance",
+    "n": 884,
+    "correct": 884,
+    "ast_accuracy": 1.0,
+    "policy": "constant-no-call (structural)",
+    "checker": "structural: metric counts abstention as correct"
+  }
+]
